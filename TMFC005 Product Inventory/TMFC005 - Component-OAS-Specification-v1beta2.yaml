@@ -1,4 +1,4 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
@@ -66,11 +66,10 @@ coreFunction:
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
       port: 8080
       resouces: 
-      - event:  
-        - GET
-        - GET /id
+      - listener: 
         - POST
-        - PATCH
+      - hub:
+        - POST
         - DELETE
     dependantAPIs:
     - name: ProductCatalogManagement 
@@ -106,7 +105,7 @@ coreFunction:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF639-ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
       apitype: openapi
       resource:
-      - resourceSpecification:
+      - resource:
         - GET
         - GET /id
     - name: AgreementManagement
@@ -119,9 +118,6 @@ coreFunction:
       - agreement:
         - GET
         - GET /id
-      - agreementSpecification:
-        - GET
-        - GET /id
     - name: GeographicAddressManagement
       version: 4.0
       id : TMF673
@@ -129,6 +125,9 @@ coreFunction:
       apitype: openapi
       resources:
       - geographicAddress:
+        - GET
+        - GET /id
+      - geographicSubAddress:
         - GET
         - GET /id
     - name: GeographicSiteManagement
@@ -372,6 +371,6 @@ coreFunction:
         - productDeleteEvent
         - productAttributeValueChangeEvent
         - productStateChangeEvent    
-management: []
-reporting: []
-security: []
+managementFunction: []
+reportingFunction: []
+securityFunction: []
