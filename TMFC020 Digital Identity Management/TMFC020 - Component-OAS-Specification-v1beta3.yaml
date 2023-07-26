@@ -1,4 +1,4 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
@@ -60,7 +60,7 @@ coreFunction:
         - taskFlow:
             - GET
             - GET/id
-            - PATCH/id
+            - PATCH
     - name: Event
       id: TMF688
       isRequired: no
@@ -75,9 +75,6 @@ coreFunction:
         - event:
             - GET
             - GET /id
-            - POST
-            - PATCH
-            - DELETE
   dependantAPIs:
     - name: PartyManagement
       id: TMF632
@@ -148,6 +145,6 @@ coreFunction:
         userRoles
           - UserRoleCreationNotification
           - UserRoleChangeNotification
-management: []
-reporting: []
-security: []
+managementFunction: []
+reportingFunction: []
+securityFunction: []
